@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+
+input {
+    border: none;
+}
+
+ul,
+li,
+ol {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 400;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+header {
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    background: url("../images/article/toubu.jpg")
+}
+
+header .back {
+    height: 100%;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+header .back span {
+    width: 17px;
+    height: 17px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-right: none;
+    transform: rotate(45deg);
+}
+
+header h2 {
+    color: #fff;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+}
+
+header .share {
+    display: inline-block;
+    height: 100%;
+    width: 55px;
+    background: url("../images/article/fenxiang.png") no-repeat center;
+    background-size: 100%;
+}
+
+.main {
+    padding: 55px 15px 15px;
+}
+
+.main .title {
+    font-size: 24px;
+    padding-bottom: 5px;
+}
+
+.main .time {
+    color: #a1a1a1;
+    padding-bottom: 6px;
+}
+
+.main .content p {
+    margin-bottom: 5px;
+}
+
+.main .source {
+    text-align: right;
+}
+
+.news {
+    padding-left: 15px;
+}
+
+.news h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.news ul {
+    display: flex;
+    overflow-x: auto;
+}
+
+.news ul::-webkit-scrollbar {
+    /* 隐藏滚动条 */
+    display: none
+}
+
+.news li {
+    border: 1px solid #eee;
+    padding: 3px;
+    margin-right: 3px;
+}
+
+.news li img {
+    width: 100px;
+    height: 80px;
+    margin-right: 5px;
+}
+
+.news li a {
+    display: flex;
+}
+
+.news a p {
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 20px;
+}
+
+.news a span {
+    font-size: 14px;
+    color: #a7a7a7;
+}
+
+.comment {
+    padding-left: 15px;
+    margin-top: 5px;
+    padding-bottom: 50px;
+}
+
+.comment-empty {}
+
+.comment-empty p {
+    text-align: center;
+    color: #a7a7a7;
+    height: 50px;
+    line-height: 50px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ebebeb;
+}
+
+footer .write-text {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .write-text input {
+    height: 75%;
+    background-color: #fff;
+    width: 90%;
+    border-radius: 5px;
+    color: #666666;
+    font-size: 18px;
+    text-indent: 10px;
+}
+
+footer a {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer a i {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+}
+
+footer .like i {
+    background: url("../images/article/good.png") no-repeat center;
+}
+
+footer .post i {
+    background: url("../images/article/share.png") no-repeat center;
+}
+
+.top-get {
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    background: url("../images/article/up.png");
+    background-size: 100% 100%;
+    transition: all 1s;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>用户协议</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <style>
+          body,html{
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+          }
+          ul li{
+            list-style-position: none;  //声明列表标志相对于列表项内容的位置
+          }
+          /*header 顶部样式*/
+          .header{
+            width: 100%;
+            height: 60px;
+            position: fixed;
+            z-index: 999; //设置元素的堆叠顺序
+          }
+          .header .top{
+            width: 100%;
+            height: 60px;
+            background: url('../icon/MyCollection/top.jpg');
+          }
+          .header .top .sect{
+            float: left;
+            width: 33.33%;
+            height: 100%;
+          }
+          .header .top .fo{
+            font-size: 20px;
+            color: #ffffff;
+            line-height: 60px;
+            text-align: center;
+          }
+          .header .top .left>i{
+            position: absolute;
+            left: 15px;
+            top:20px;
+            width: 15px;
+            height: 15px;
+            border: 2px solid #fff;
+            border-top: none;
+            border-right: none;
+            transform:rotate(45deg);
+         }
+          /*header end*/
+          /*main*/
+          .main{
+            width: 100%;
+          }
+          .main .article{
+            padding: 60px 10px 0 10px;
+          }
+          .main .title{
+            color: #181818;
+            font-size: 18px;
+            padding: 10px 0 10px 0;
+          }
+          .main .text{
+            color: #686868;
+            font-size: 15px;
+            line-height: 22px;
+          }
+          /*main end*/
+      </style>
+  </head>
+  <body>
+      <div class="agreement">
+        <!-- header -->
+        <div class="header">
+          <div class="top">
+            <div class="sect left"><i onclick="closeWinDs()"></i></div>
+            <div class="sect fo">用户协议</div>
+          </div>
+        </div>
+        <!-- header end -->
+
+        <!-- main -->
+        <div class="main">
+          <div class="article">
+            <div class="title">用户服务协议</div>
+            <div class="text">
+              用户协议用户服务协议用户服务协议用户服务协议用户服务协议
+              用户服务协议用户服务协议用户服务协议用户服务协议用户服务协议
+              用户服务协议用户服务协议用户服务协议用户服务协议用户服务协议
+              用户服务协议用户服务协议用户服务协议
+            </div>
+          </div>
+        </div>
+        <!-- main end -->
+      </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript">
+function closeWinDs(){
+  api.closeWin({
+      name: 'Agreement'
+  });
+
+}
+  </script>
+  </html>

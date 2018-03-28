@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+  />
+  <title>用户协议</title>
+  <link rel="stylesheet" type="text/css" href="../css/api.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    a {
+      text-decoration: none;
+      color: #1e1e1e;
+      /* 去除触点高亮 */
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    }
+
+    body,
+    html {
+      background-color: #f2f2f2;
+      width: 100%;
+      height: 100%;
+    }
+
+    ul li {
+      list-style-type: none;
+    }
+
+    /*my-header*/
+
+    .my-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 60px;
+      margin-bottom: 60px;
+    }
+
+    .my-header img {
+
+
+    }
+
+    .community {
+      width: 100%;
+      background-color: #f1f1f1;
+      height: 90%;
+    }
+
+    .section {
+      width: 100%;
+      height: 60px;
+       background: url('../images/my/11.jpg');
+
+    }
+
+    .section .sect {
+      float: left;
+      width: 33.33%;
+      height: 100%;
+    }
+
+    .section .fo {
+      font-size: 20px;
+      color: #ffffff;
+      line-height: 60px;
+      text-align: center;
+    }
+
+    .section .left>i{
+      position: absolute;
+      left: 15px;
+      top:20px;
+      width: 15px;
+      height: 15px;
+      border: 2px solid #fff;
+      border-top: none;
+      border-right: none;
+      transform:rotate(45deg);
+    }
+
+    .section .right ul li {
+      float: right;
+      background: #fff;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      position: relative;
+      right: 8px;
+      top: 28px;
+      margin-left: 5px;
+    }
+
+    .upper,
+    .lower {
+      width: 100%;
+      background-color: #fff;
+      margin-bottom: 19px;
+    }
+
+    strong {
+      font-weight: 400;
+    }
+
+    .upper a,
+    .lower a {
+      display: flex;
+      width: 100%;
+      height: 65px;
+      font-size: 24px;
+      justify-content: space-between;
+      padding: 0 10px;
+      align-items: center;
+    }
+
+    .upper a:nth-of-type(1),
+    .lower a:nth-of-type(1) {
+      border-bottom: 1px solid #eee;
+    }
+
+    .upper a span {
+      color: #8d8d8d;
+      font-size: 20px;
+    }
+
+    .lower a span {
+      height: 100%;
+      width: 30px;
+      background: url("../icon/comment_details/43.png") no-repeat center;
+    }
+    footer{
+      text-align: center;
+      color: #8d8d8d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="community">
+    <div class="section">
+      <div class="sect left">
+        <i onclick="closeAbout()"></i>
+      </div>
+      <div class="sect fo">关于</div>
+    </div>
+    <div class="my-header">
+      <img src="../icon/comment_details/42.png">
+    </div>
+    <div class="my-main">
+      <ul class="upper">
+        <a href="javascript:;">
+          <strong>当前版本</strong>
+          <span>1.0.0</span>
+        </a>
+        <a href="javascript:;">
+          <strong>新版更新</strong>
+          <span>无新版</span>
+        </a>
+      </ul>
+      <ul class="lower">
+        <a href="javascript:;">
+          <strong>帮助与反馈</strong>
+          <span></span>
+        </a>
+        <a href="javascript:;">
+          <strong>给软件评分</strong>
+          <span></span>
+        </a>
+      </ul>
+      <footer>
+        <p>copyright @2018 fenxiangzhineng All Right Reserved</p>
+      </footer>
+    </div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+    function closeAbout(){
+        api.closeWin({
+            name: 'about'
+        });
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>本周热门</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <style type="text/css">
+        .aui-card-list-user-avatar.header{
+          border-radius: 50%;
+          border:1px solid #fff;
+          overflow: hidden;
+        }
+        .aui-card-list-user-name small.concern{
+          border:1px solid #fff;
+          border-radius:15px;
+          height: 20px;
+          width: 2rem;
+          max-width: 40px;
+          line-height: 20px;
+          text-align: center;
+          color: #fff;
+          background-color: #999;
+        }
+        .aui-list-item-right.goods-price.right{
+          position: absolute;
+          right:1rem;
+        }
+        .aui-card-list-footer.aui-border-t{
+          border-top:none;
+        }
+        /*导航*/
+        nav{
+          height: 30px;
+          width: 100%;
+          line-height: 30px;
+          font-size: 20px;
+          background: #fff;
+        }
+        nav>ul{
+          width: 100%;
+          height: 100%;
+        }
+        nav>ul>li{
+          float: left;
+          width: 33.33%;
+          text-align: center;
+          font-size: 18px;
+          color:#919191;
+        }
+        nav>ul>li.hover{
+          color:#161616;
+        }
+        /*主体*/
+        section>div{
+          display: none;
+        }
+        section>div.current{
+          display:block;
+        }
+        /*脚部*/
+        .aui-card-list{
+          margin-bottom: 0.35rem !important; //浏览器兼容性
+        }
+        .footer{
+          margin-top: 10px;
+          position: relative;
+          width: 100%;
+          height: 35px;
+        }
+        .footer .bixbox div{
+          position:relative;
+          right:0;
+          float: left;
+          line-height: 23px;
+          margin-left: 8px;
+        }
+        .footer .share{
+          background: url(../images/share.png) no-repeat;
+          height:21px;
+          width:21px;
+          -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+          margin-right: 5px;
+        }
+        .footer .bixbox{
+          float: right;
+          line-height: 30px;
+        }
+        .footer .sbg{
+          width: 22px;
+          height: 21px;
+          background: url(../images/love.png) no-repeat;
+          -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+        }
+        .footer .sbg.two{
+          background: url(../images/information.png) no-repeat;
+          -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+        }
+        .maxbox{display: none;}
+        .maxbox.current{display: block;}
+    </style>
+</head>
+<body>
+    <nav id="nav">
+      <ul>
+        <li class="hover menu">本周热门</li>
+        <li class="menu">最新发布</li>
+        <li class="menu">最多回复</li>
+      </ul>
+    </nav>
+    <section class="aui-content">
+        <div class="maxbox current">
+          <div class="aui-card-list aui-border-t aui-border-b">
+            <div class="aui-card-list-header aui-card-list-user">
+                <div class="aui-card-list-user-avatar header">
+                    <img src="../image/demo1.png">
+                </div>
+                <div class="aui-card-list-user-name">
+                    <div class="aui-font-size-16">风一样的男子</div>
+                    <small class="concern">关注</small>
+                </div>
+                <div class="aui-card-list-user-info">30分钟前</div>
+            </div>
+            <div class="aui-card-list-content aui-border-t" style="margin-left: 0.9rem;">
+                <ul class="aui-list aui-list-noborder" onclick="OpcomSon()">
+                    <div class="aui-list-item aui-padded-l-0">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-title aui-font-size-14 goods-title">如果你无法简洁表达的的想法，那只是说明你还不够了解他</div>
+                        </div>
+                    </div>
+                    <div class="aui-list-item aui-padded-l-0">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-right goods-price right">——阿尔伯特爱因斯坦</div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+            <div class="footer">
+              <div class="bixbox">
+                  <div class="sbg"></div>
+                  <div class="love">2012</div>
+                  <div class="sbg two"></div>
+                  <div class="information">23</div>
+                  <div class="share"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="maxbox">
+          a
+        </div>
+        <div class="maxbox">
+          b
+        </div>
+    </section>
+</body>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript">
+    window.onload = function(){
+      //封装好获取class
+      function getClass(tagName,className){
+        if(document.getElementsByClassName){
+          return document.getElementsByClassName(className);
+        }else{
+          var tags=document.getElementsByTagName(tagName);
+          var tagArr=[];
+          for(var i=0;i < tags.length; i++){
+            if(tags[i].class == className){
+              tagArr[tagArr.length] = tags[i];
+            }
+          }
+          return tagArr;
+        }
+      }
+      //切换盒子
+      var btns = document.getElementById('nav').getElementsByTagName('li');
+      var maxboxs = getClass("div","maxbox")
+      for(var i=0;i<btns.length;i++){
+          btns[i].index =i
+          btns[i].onclick = function(){
+          //把所有的按钮的类都清除掉！
+             for(var i=0;i<btns.length;i++){
+                  btns[i].className = '';
+             }
+             //确立自己
+              this.className = 'hover';
+              for(var i=0;i<maxboxs.length;i++){
+                maxboxs[i].className = 'maxbox'
+              }
+              maxboxs[this.index].className = 'maxbox current'
+          }
+      }
+
+    }
+      //打开一个新窗口
+      function OpcomSon(){
+          api.openWin({
+            name: 'CommunityDetails',
+            url: 'CommunityDetails.html'
+        });
+      }
+</script>
+</html>
