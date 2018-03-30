@@ -1,9 +1,9 @@
- <widget id="A6076992586506"  version="0.0.1">
+ <widget id="A6077842529173"  version="0.0.1">
     <name>登录界面</name>
     <description>
         Example For APICloud.
     </description>
-    <author email="developer@apicloud.com" href="svn://svn4.apicloud.com/A6076992586506/纷享智能">
+    <author email="developer@apicloud.com" href="http://www.apicloud.com">
         Developer
     </author>
     <content src="html/Login.html" />

@@ -35,7 +35,16 @@
           }
 
           .content ol li{
-            float: left; width: 12px; height: 12px; cursor: pointer; background-color: gray; border-radius: 50%; margin-left: 1px;
+            float: left;
+            width: 12px;
+            height: 12px;
+            cursor: pointer;
+            background-color: gray;
+            border-radius: 50%;
+            margin-left: 1px;
+          }
+          .content ol li.current{
+            background: #fff;
           }
           .arrow {
             position: absolute;
@@ -46,16 +55,9 @@
             font-size: 36px;
             line-height: 39px;
             text-align: center;
-            color: #fff;
+            color: #000;
             cursor: pointer;
-            display: none;
           }
-        #prev{
-          left: 20px;
-        }
-        #next{
-          right: 20px;
-        }
 /*picture carousel css end*/
 
 /*mue*/
@@ -63,6 +65,7 @@
             width: 97%;
             height: 45px;
             padding-left: 3%;
+            z-index: 1;
           }
 
           .mue div{
@@ -175,28 +178,24 @@
         <!-- picture carousel -->
       <div class="content">
         <div class="scroll" id="scroll">
-            <img src="../image/demo1.png" / width="100%">
-            <img src="../image/demo2.png" />
-            <img src="../image/demo1.png" />
-            <img src="../image/demo3.png" />
-            <img src="../image/demo4.png" />
-            <img src="../image/demo5.png" />
-            <img src="../image/demo3.png" />
+            <img src="../image/demo1.png" / alt="1">
+            <img src="../image/demo2.png" / alt="2">
+            <img src="../image/demo1.png" / alt="3">
+            <img src="../image/demo3.png" / alt="4">
+            <img src="../image/demo4.png" / alt="3">
         </div>
-        <ol>
+        <ol id='ridusTolle'>
           <li class="current"></li>
           <li></li>
           <li></li>
           <li></li>
           <li></li>
         </ol>
-        <a href="javascript:;" id="prev" class="arrow">&lt;</a>
-        <a href="javascript:;" id="next" class="arrow">&gt;</a>
       </div>
         <!-- picture carousel-end -->
 
         <!-- mue -->
-        <div class="mue" id="li">
+        <div class="mue" id="mueToggle">
           <div class="click hover">推荐</div>
           <div class="click">新品</div>
           <div class="click">咨询</div>
@@ -283,7 +282,6 @@
   <script type="text/javascript" src="../script/api.js"></script>
   <script type="text/javascript">
       apiready = function(){
-
         function getClass(tagName,className){
             if(document.getElementsByClassName){
                 return document.getElementsByClassName(className);
@@ -299,7 +297,7 @@
             }
         }
 
-        var btns = document.getElementById('li').getElementsByTagName('div');
+        var btns = document.getElementById('mueToggle').getElementsByTagName('div');
         var pages = getClass('div','sect');
         for(var j=0;j<btns.length;j++){
             btns[j].index = j;
@@ -314,17 +312,56 @@
         }
 
       };
+      window.onload = function(){
+        autoplay();
+      }
+      //animiate
+      function runIng(obj,attr,target,fn){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function(){
+        var cur = 0;
+        if(attr == "opacity"){
+          cur = Math.round(parseFloat(getstyle(obj,attr))*100);
+        }else{
+          cur = parseInt(getstyle(obj,attr));
+        }
+          var speed = (target-cur)/8;
+          speed = speed>0?Math.ceil(speed):Math.floor(speed);
 
+          if(cur == target){
+            clearInterval(obj.timer);
+              if(fn){
+                fn();
+              }
+          }else{
+              if(attr == "opacity"){
+                  obj.style.filter = "alpha(opacity="+(cur+speed)+")";
+                  obj.style.opacity = (cur+speed)/100;
+                }else{
+                  obj.style[attr] = cur + speed + "px";
+                }
+               }
+            },30)
+        }
+      //获取样式
+      function getstyle(obj,name){
+      if(obj.currentStyle){
+          return obj.currentStyle[name];
+      }else{
+        return getComputedStyle(obj,false)[name];
+      }
+    }
+    //end
       // 轮播图
       var listpi = document.getElementById('scroll').getElementsByTagName('img');//获取图片数量
       var winWdith = document.body.clientWidth;//获取屏幕宽度
-      var list;
-      var prev;
-      var next;
+      var list = document.getElementById('scroll');//获取大盒子
+      var prev= document.getElementById('prev');
+      var next= document.getElementById('next');
+      var ridusTolles = document.getElementById('ridusTolle').getElementsByTagName('li')
       var listLength;
-      list = document.getElementById('scroll');//获取大盒子
-      prev = document.getElementById('prev');
-      next = document.getElementById('next');
+      var listpiLast =listpi[0].cloneNode(true);//克隆第一张图片
+      list.appendChild(listpiLast)
       listLength=list.style.width = listpi.length*winWdith+'px';//定义大盒子长度
       //定义图片长度
       for(var i = 0;i<listpi.length;i++){
@@ -334,24 +371,39 @@
       var num = 0;
       function animate(){
         num++;
-        if(num>listpi.length-1){
-          num=0;
+        if(num==listpi.length){
+          num=1;
+          list.style.left='0'
         }
-        list.style.left = -num*winWdith+'px'
-      }
-      prev.onclick = function(){
-        animate(414);
-      }
-      next.onclick = function(){
-        animate(-414);
+        for (var i = 0; i < ridusTolles.length; i++) {
+          ridusTolles[i].className='';
+        }
+        if(num==listpi.length-1){
+          ridusTolles[0].className='current'
+        }
+        else{
+          ridusTolles[num].className='current'
+        }
+        runIng(list,"left",-num*winWdith,null);
       }
       //自动轮播
       var timer;
       function autoplay(){
           timer = setInterval(function(){
             animate()
-          },3000)
+          },2000)
       }
-      autoplay();
+      //滑动到指定位置定死
+      var mueToggle = document.getElementById('mueToggle')
+      window.onscroll = function(){
+        var bodyScrollTop = document.body.scrollTop;
+        if(bodyScrollTop>153){
+          mueToggle.style.position = 'fixed'
+          mueToggle.style.top = '0px'
+          mueToggle.style.background = '#fff'
+        }else{
+          mueToggle.style.position = 'static'
+        }
+      }
   </script>
   </html>
