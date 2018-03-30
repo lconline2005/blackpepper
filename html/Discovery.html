@@ -9,64 +9,53 @@
           body,html{
             width: 100%;height: 100%; margin: 0; padding: 0;
           }
-/*picture carousel css*/
-
-          @-webkit-keyframes carousel{
-            0%{
-              background:black;
-            }
-            20%{
-              background:red;
-            }
-            40%{
-              background:blue;
-            }
-            60%{
-              background:pink;
-            }
-            80%{
-              background:yellow;
-            }
-            100%{
-              background:black;
-            }
+          ul li{
+            list-style-type: none;
           }
 
           .find_style{
             max-width:555px;  margin:0 auto;
           }
-
-          .scroll{
+/*picture carousel css*/
+          .content{
             overflow:hidden;  height: 153px;  position: relative;
           }
 
-          .scroll ul{
-            position: absolute; height: 153px; width: 100%;
+          .scroll{
+            position: absolute; height: 153px; width: 2898px;
           }
 
-          .scroll ul li{
-            float: left; height: 153px; width: 100%;
+          .scroll img{
+            float: left;
+            height:100%;
           }
 
-          .scroll ul li a{
-            width: 100%; height: 153px;
-          }
-
-          .scroll ul li #sc{
-            -webkit-animation:carousel 10s infinite;
-          }
-
-          .scroll ul li img{
-
-          }
-
-          .scroll ol{
+          .content ol{
             position: absolute; width: 66px; bottom: 5px; left:50%; margin-left: -33px;
           }
 
-          .scroll ol li{
+          .content ol li{
             float: left; width: 12px; height: 12px; cursor: pointer; background-color: gray; border-radius: 50%; margin-left: 1px;
           }
+          .arrow {
+            position: absolute;
+            top:70px;
+            z-index: 2;
+            width: 40px;
+            height: 40px;
+            font-size: 36px;
+            line-height: 39px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+          }
+        #prev{
+          left: 20px;
+        }
+        #next{
+          right: 20px;
+        }
 /*picture carousel css end*/
 
 /*mue*/
@@ -184,22 +173,26 @@
   <body>
     <div class="find_style">
         <!-- picture carousel -->
-        <div class="scroll">
-          <ul>
-            <li><a href="#" id="sc"><img src="" /></a></li>
-            <li><a href="#"><img src="" /></a></li>
-            <li><a href="#"><img src="" /></a></li>
-            <li><a href="#"><img src="" /></a></li>
-            <li><a href="#"><img src="" /></a></li>
-          </ul>
-          <ol>
-            <li class="current"></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ol>
+      <div class="content">
+        <div class="scroll" id="scroll">
+            <img src="../image/demo1.png" / width="100%">
+            <img src="../image/demo2.png" />
+            <img src="../image/demo1.png" />
+            <img src="../image/demo3.png" />
+            <img src="../image/demo4.png" />
+            <img src="../image/demo5.png" />
+            <img src="../image/demo3.png" />
         </div>
+        <ol>
+          <li class="current"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+        <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+        <a href="javascript:;" id="next" class="arrow">&gt;</a>
+      </div>
         <!-- picture carousel-end -->
 
         <!-- mue -->
@@ -290,34 +283,75 @@
   <script type="text/javascript" src="../script/api.js"></script>
   <script type="text/javascript">
       apiready = function(){
+
         function getClass(tagName,className){
-          if(document.getElementsByClassName){
-            return document.getElementsByClassName(className);
-          }else{
-            var args = document.getElementsByTagName(tagName);
-            var argsArr = [];
-            for(var i=0;i<args.length;i++){
-              if(args[i].class==className){
-                argsArr[argsArr.length] = args[i];
-              }
+            if(document.getElementsByClassName){
+                return document.getElementsByClassName(className);
+            }else{
+                var args = document.getElementsByTagName(tagName);
+                var argsArr = [];
+                for(var i=0;i<args.length;i++){
+                    if(args[i].class==className){
+                        argsArr[argsArr.length] = args[i];
+                    }
+                }
+                return argsArr;
             }
-            return argsArr;
-          }
         }
 
         var btns = document.getElementById('li').getElementsByTagName('div');
         var pages = getClass('div','sect');
         for(var j=0;j<btns.length;j++){
-          btns[j].index = j;
-          btns[j].onclick =  function(){
-            for(var x=0;x<btns.length;x++)
-              btns[x].className = '';
-            this.className = 'hover';
-            for(var z=0;z<pages.length;z++)
-              pages[z].className = 'sect';
-            pages[this.index].className = 'sect current';
-          }
+            btns[j].index = j;
+            btns[j].onclick =  function(){
+                for(var x=0;x<btns.length;x++)
+                    btns[x].className = '';
+                this.className = 'hover';
+                for(var z=0;z<pages.length;z++)
+                    pages[z].className = 'sect';
+                pages[this.index].className = 'sect current';
+            }
         }
+
       };
+
+      // 轮播图
+      var listpi = document.getElementById('scroll').getElementsByTagName('img');//获取图片数量
+      var winWdith = document.body.clientWidth;//获取屏幕宽度
+      var list;
+      var prev;
+      var next;
+      var listLength;
+      list = document.getElementById('scroll');//获取大盒子
+      prev = document.getElementById('prev');
+      next = document.getElementById('next');
+      listLength=list.style.width = listpi.length*winWdith+'px';//定义大盒子长度
+      //定义图片长度
+      for(var i = 0;i<listpi.length;i++){
+        listpi[i].style.width = winWdith+'px'
+      }
+      //轮播
+      var num = 0;
+      function animate(){
+        num++;
+        if(num>listpi.length-1){
+          num=0;
+        }
+        list.style.left = -num*winWdith+'px'
+      }
+      prev.onclick = function(){
+        animate(414);
+      }
+      next.onclick = function(){
+        animate(-414);
+      }
+      //自动轮播
+      var timer;
+      function autoplay(){
+          timer = setInterval(function(){
+            animate()
+          },3000)
+      }
+      autoplay();
   </script>
   </html>

@@ -40,9 +40,9 @@
           .section .left>i{
             position: absolute;
             left: 15px;
-            top:20px;
-            width: 15px;
-            height: 15px;
+            top:25px;
+            width: 12px;
+            height: 12px;
             border: 2px solid #fff;
             border-top: none;
             border-right: none;
@@ -51,13 +51,13 @@
           .section .right ul li{
             float:right;
             background: #fff;
-            width: 6px;
-            height:6px;
+            width: 5px;
+            height:5px;
             border-radius: 50%;
             position: relative;
-            right:8px;
+            right:15px;
             top:28px;
-            margin-left: 5px;
+            margin-left: 4px;
           }
           /*section end*/
           /*header*/
@@ -233,63 +233,76 @@
             width: 5px;
             margin: 0 5px 0 5px;
           }
+
           .main .text .right .foot{
+            position: relative;
             margin-top: 10px;
             width: 100%;
-            height:22px;
+            height:30px;
           }
-          .main .text .right .foot .tk{
-            float: left;
+          .main .text .right .foot div{
+            height: 100%;
           }
           .main .text .right .foot .f{
-            width: 50%;
             font-size: 15px;
             color: #8d8d8d;
-          }
-          .main .text .right .foot .left{
-            width: 32%;
-          }
-          .main .text .right .foot .right{
-            width: 68%;
+            float: left;
+            text-align: center;
           }
           .main .text .right .foot .left .date{
-            margin-left: 10px;
+            position: absolute;
+            left: 5px;
           }
-          .main .text .right .foot .right .lts{
-            float: right;
-            margin-right: 10px;
+          .main .text .right .foot .left .time{
+            position: absolute;
+            left:40px;
           }
-          .main .text .right .foot .right .lts img{
-            width: 18px;
-            margin-right: 8px;
+          .main .text .right .foot .right .like{
+            position: absolute;
+            right: 40%;
+            background: url('../icon/comment_details/details_12.png') no-repeat;
+            padding-left: 20px;
+            width: 45px;
+          }
+          .main .text .right .foot .right .talk{
+            position: absolute;
+            right: 20%;
+            background: url('../icon/comment_details/details_14.png') no-repeat;
+            padding-left: 20px;
+            width: 45px;
+          }
+          .main .text .right .foot .right .share{
+            position: absolute;
+            right: 0%;
+            background: url('../icon/comment_details/details_13.png') no-repeat;
+            padding-left: 20px;
+            width: 45px;
+          }
+          @media screen and (max-width: 360px){
+            .main .text .right .foot .right .like{width: 38px;}
+            .main .text .right .foot .right .talk{width: 38px;}
+            .main .text .right .foot .right .share{width: 38px;}
           }
           /*main end*/
 
           /*footer*/
           .footer{
-            width: 100%;
-            height: 8%;
             position: fixed;
+            width: 100%;
+            height: 50px;
             bottom: 0;
             background-color: #ebebeb;
           }
-          .footer .main{
-            width: 95%;
-            margin: 9px auto 0;
-          }
           .footer .main .input{
+            position: absolute;
             width: 50%;
-            height: 35px;
-            float: left;
+            height: 60%;
             font-size: 15px;
-            line-height: 35px;
             background-color: #ffffff;
             border-radius: 5px;
+            top:20%;
+            left: 5px;
             padding-left: 5px;
-          }
-          .footer .main .input input{
-            width:100%;
-            outline:none;
           }
           .footer .main .like{
             position:absolute;
@@ -344,7 +357,7 @@
     <!-- header end -->
 
     <!-- main -->
-      <div class="main">
+      <div class="main" style="padding-bottom:30px;">
         <div class="menu">
           <div class="left"><div>赞</div>6666</div>
           <div class="mid"><div>评论</div>66</div>
@@ -365,14 +378,14 @@
               </div>
             </div>
             <div class="foot">
-              <div class="left f tk">
-                <div class="tk">3-20</div>
-                <div class="tk date">15:10</div>
+              <div class="left f">
+                <div class="date">3-20</div>
+                <div class="time">15:10</div>
               </div>
-              <div class="right f tk">
-                <div class="tk lts"><img src="../icon/comment_details/details_13.png" alt="">347</div>
-                <div class="tk lts t"><img src="../icon/comment_details/details_14.png" alt="">6</div>
-                <div class="tk lts"><img src="../icon/comment_details/details_12.png" alt="">66</div>
+              <div class="right f">
+                <div class="like">347</div>
+                <div class="talk">666</div>
+                <div class="share">666</div>
               </div>
             </div>
           </div>
@@ -391,18 +404,19 @@
               </div>
             </div>
             <div class="foot">
-              <div class="left f tk">
-                <div class="tk">3-20</div>
-                <div class="tk date">15:10</div>
+              <div class="left f">
+                <div class="date">3-20</div>
+                <div class="time">15:10</div>
               </div>
-              <div class="right f tk">
-                <div class="tk lts"><img src="../icon/comment_details/details_13.png" alt="">347</div>
-                <div class="tk lts t"><img src="../icon/comment_details/details_14.png" alt="">6</div>
-                <div class="tk lts"><img src="../icon/comment_details/details_12.png" alt="">66</div>
+              <div class="right f">
+                <div class="like">347</div>
+                <div class="talk">6</div>
+                <div class="share">66</div>
               </div>
             </div>
           </div>
         </div>
+
 
         </div>
 
@@ -414,7 +428,7 @@
     <!-- footer -->
       <div class="footer">
         <div class="main">
-          <div class="input li"><input type="text" name="" value="" placeholder="写评论 ..."></div>
+          <input class="input" type="text" name="" value="" placeholder="写评论 ...">
           <div class="like li"></div>
           <div class="share li"></div>
         </div>
