@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="css/api.css"/>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+        }
+        .wrap {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-flex-flow: column;
+        }
+        flex-1 {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+        }
+        .header {
+            height: 44px;
+            width: 100%;
+            line-height: 44px;
+            font-size: 20px;
+            text-align: center;
+            position: relative;
+
+        }
+        .header.myself,header.main{
+            background: #666;
+            line-height: 44px;
+            color: #fff;
+        }
+        .index>div{
+          display: inline-block;
+          width: 50%;
+          height: 100%;
+          position: absolute;
+          top:0;
+          right: 50%;
+          left: 50%;
+          margin-left: -25%;
+        }
+        .index>span{
+          width: 20px;
+          height:20px;
+          background:url(images/same_content/search.png) no-repeat;
+          -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+          position: absolute;
+          right:20px;
+          top:10px;
+        }
+        .index>div>i{
+          border-left:1px solid #e5e5e5;
+          border-right:1px solid #e5e5e5;
+        }
+        .index>div>a{
+          color: #e5e5e5;
+          width: 38%;
+        }
+        .index>div>a.hover{
+          color:#0d0d0d;
+          border-bottom:1px solid;
+          height: 36px;
+        }
+        /*脚步*/
+        footer {
+            height: 50px;
+            width: 100%;
+            background-color: #81a9c3;
+            color: white;
+            text-align: center;
+        }
+        footer ul{
+          width: 100%;
+          height: 100%;
+        }
+        footer ul li{
+          width: 33.333%;
+          height: 100%;
+          float: left;
+          background: #e5e5e5;
+        }
+        footer ul li span{
+          height: 20px;
+          font-size: 10px;
+          display: inline;
+        }
+        footer ul li div{
+          height: 14px;
+          font-size: 10px;
+          color: #999;
+        }
+        footer ul li div.footerBg{
+          width: 100%;
+          height: 36px;
+        }
+        footer ul li div.footerBg div{
+            width: 26px;
+            height: 26px;
+            color: #999;
+            border:1px solid #999;
+            border-radius: 50%;
+            position: relative;
+            background: #999;
+            margin: 0 auto;
+            top:6px;
+          }
+        footer ul li div.footerBg.big{
+          width: 40px;
+          height: 40px;
+          color: #999;
+          border:1px solid #999;
+          border-radius: 50%;
+          position: relative;
+          background: #999;
+          margin: 0 auto;
+          margin-top: 2px;
+        }
+        .flex-1 {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+        }
+        .header{
+          display: none;
+        }
+        .header.current{
+          display: block;;
+        }
+    </style>
+</head>
+
+<body class="wrap">
+    <header class="header index current" id="header">
+      <div>
+        <a style="margin-right:-5px;" class="menu hover" onclick="fnSetNavMenuIndex(0)">发现</a>
+        <i></i>
+        <a class="menu" onclick="fnSetNavMenuIndex(1)">社区</a>
+      </div>
+      <span onclick="openSearch()"></span>
+    </header>
+
+
+    <section class="flex-1">
+    </section>
+    <footer id="footer">
+        <ul>
+          <li onclick="clickRandomSwiBtn1()">
+              <div class="footerBg one current">
+                  <div></div>
+              </div>
+              <div>首页</div>
+          </li>
+          <li onclick="clickRandomSwiBtn2()">
+              <div class="footerBg big two current">
+              </div>
+          </li>
+          <li onclick="clickRandomSwiBtn3()">
+              <div class="footerBg three current">
+                <div></div>
+              </div>
+              <div>我的</div>
+          </li>
+        </ul>
+    </footer>
+</body>
+<script type="text/javascript" src="script/api.js"></script>
+<script type="text/javascript">
+
+apiready = function() {
+    header = $api.dom('header'); // 获取 header 标签元素
+    footer = $api.dom('footer'); // 获取 footer 标签元素
+    // 1.修复开启沉浸式效果带来的顶部Header与手机状态栏重合的问题，最新api.js方法已支持适配iPhoneX；
+    // 2.默认已开启了沉浸式效果 config.xml中 <preference name="statusBarAppearance" value="true"/>
+    // 3.沉浸式效果适配支持iOS7+，Android4.4+以上版本
+    headerH = $api.fixStatusBar(header);
+    // 最新api.js为了适配iPhoneX增加的方法，修复底部Footer部分与iPhoneX的底部虚拟横条键重叠的问题；
+    footerH = $api.fixTabBar(footer);
+    menus = $api.domAll(header, ".menu");
+    api.openFrameGroup ({
+      name: 'toggleIndex',
+      background: '#fff',
+      scrollEnabled: true,
+      rect: {
+        marginTop: 44, // main页面距离win顶部的高度
+        marginBottom: footerH, // main页面距离win底部的高度
+        w: 'auto' // main页面的宽度 自适应屏幕宽度
+      },
+      index: 0,
+      frames: [{
+          name: 'Discovery',
+          url: 'html/Discovery.html',
+          bgColor: '#fff'
+      },{
+          name: 'ThisWeekHot',
+          url: 'html/Community.html',
+          bgColor: '#000'
+      }
+    ]
+  }, function(ret, err){
+      SetClass(ret.index);
+  });
+};
+//定义全局元素
+  var menus,header,footer,headerH,footerH,navH;
+//定义首页发现
+//点击切换社区栏目
+function fnSetNavMenuIndex(index_){
+  SetClass(index_);
+  api.setFrameGroupIndex({
+      name: 'toggleIndex',
+      index: index_,
+      scroll: false
+  });
+}
+//循环查出判断Class
+function SetClass(index_){
+    for(var i=0;i<menus.length;i++){
+      if(index_==i){
+        $api.addCls(menus[i],"hover");
+      }else {
+        $api.removeCls(menus[i],"hover");
+      }
+    }
+}
+
+function clickRandomSwiBtn1(){
+  api.closeFrame({
+      name: 'zhineng'
+  });
+  api.closeFrame({
+      name: 'My'
+  });
+
+
+}
+
+//打开zhineng页面
+function clickRandomSwiBtn2(){
+  api.openFrame({
+      name: 'zhineng',
+      url: 'html/zhineng.html',
+      rect: {
+        marginTop: 0,
+        marginBottom: footerH,
+        w: 'auto',
+        h: 'auto'
+      },
+      bounces: false
+  });
+}
+//打开My页面
+function clickRandomSwiBtn3(){
+  api.openFrame({
+      name: 'My',
+      url: 'html/My.html',
+      rect: {
+        marginTop: 0,
+        marginBottom: footerH,
+        w: 'auto',
+        h: 'auto'
+      },
+      bounces: false
+  });
+}
+//打开search页面
+function openSearch(){
+  api.openWin({
+      name: 'search',
+      url: 'html/search.html'
+  });
+
+}
+</script>
+
+</html>

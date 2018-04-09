@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>搜索</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <style>
+      html,body{
+         -webkit-touch-callout:none;
+         -webkit-text-size-adjust:none;
+         -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+         -webkit-user-select:none;
+          line-height: 25px;
+     }
+
+    html body{
+        height: 100%;
+        width: 100%;
+        background-color: #ffffff;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        font-style: normal;
+    }
+    ul{
+        height: 100%;
+        width: 100%;
+        list-style: none;
+        display: -webkit-box;
+        display: box;
+    }
+    header{
+      height: 50px;
+      line-height: 50px;
+      position: fixed;
+      background-color: #fff;
+      width: 100%;
+      position: relative;
+      text-align: center;
+    }
+    header>i{
+      position: absolute;
+      left: 15px;
+      top:15px;
+      width: 15px;
+      height: 15px;
+      border: 2px solid #000000;
+      border-top: none;
+      border-right: none;
+      transform:rotate(45deg);
+      -webkit-transform:rotate(45deg);
+    }
+    header>em{
+      position: absolute;
+      right: 15px;
+      top:15px;
+      width: 25px;
+      height: 25px;
+      background: #000;
+    }
+    header div{
+      text-align: center;
+    }
+    header div a{
+      color: #e5e5e5;
+      font-size: 17px;
+    }
+    header div a.current{
+      color: #000;
+      border-bottom: 2px solid #000;
+    }
+    .body{
+      padding: 0 10px 0 10px;
+    }
+    .search-input{
+        width: 85%;
+        height: 28px;
+        text-align: center;
+        background-color: #e4e5e7;
+    }
+    .search-advertise{
+        position: absolute;
+        left: 50%;
+        margin-left: -90px;
+        top: 13px;
+        width: 18px;
+        height: 18px;
+        background:url("../images/same_content/search.png") no-repeat;
+        background-size: 17px;
+    }
+    .flex1{
+        -webkit-box-flex:1;
+        position: relative;
+    }
+    .search-tag{
+        background-color:#6495F9;
+        color: #ffffff;
+
+    }
+    .webkit-box-center{
+        display:-webkit-box;
+        -webkit-box-pack:center;
+        -webkit-box-align:center
+    }
+    .tagBox{
+        margin-top: 30px;
+        margin-left: auto;
+
+    }
+    .cancel{
+        width:50px;
+        font-size:14px;
+    }
+    .ul{
+      width: 100%;
+      display: block;
+      float: left;
+      position: relative;
+    }
+    .ul li{
+      height: 30px;
+      line-height: 30px;
+      color: #262626;
+      background:#e5e5e5;
+      font-size: 12px;
+      line-height: 30px;
+      padding: 0 5px 0 5px;
+      margin: 10px 10px 12px 10px;
+      display: inline-flex;
+
+    }
+    .middles{
+      position: relative;
+      color:#ba0000;
+      font-size: 15px;
+      margin-top: 20px;
+      padding-left: 10px;
+      padding-bottom: 10px;
+    }
+    .history{
+      position: relative;
+      color:#000000;
+      font-size: 15px;
+      margin-top: 20px;
+      padding-left: 10px;
+      padding-bottom: 10px;
+    }
+    .middles.one{
+      margin-top: 30px;
+    }
+    .bigbox{
+      display: flex;
+    }
+    .history i{
+        float: right;
+        height: 100%;
+        width: 63px;
+        background: url(../images/garbage.png) no-repeat right center;
+        color: #000000;
+    }
+    .delete{
+      float: right;
+      color: #a9a9a9;
+    }
+    .delete img{
+      width: 16px;
+      height: 17px;
+      vertical-align:middle;
+    }
+    .calloff{
+      float: right;
+      vertical-align:middle;
+      text-align: center;
+      line-height: 50px;
+      font-size: 15px;
+      width: 15%;
+      color: #686868;
+      font-style: normal;
+    }
+    .journal{
+      font-size: 17px;
+      color: #979797;
+    }
+    .customer{
+      font-size: 17px;
+      color: #979797;
+    }
+    .searchfor>div>i{
+      border-left:1px solid #cfcfcf;
+      border-right:1px solid #cfcfcf;
+    }
+    .searchfor>div>a{
+      color: #cfcfcf;
+      width: 20%;
+    }
+
+      </style>
+  </head>
+  <body>
+    <header  class="searchfor">
+        <div class>
+          <a href="javascript:void(0)" class="journal" style="margin-left:17px;">帖子</a>
+            <i></i>
+          <a href="javascript:void(0)" class="current" >文章</a>
+            <i></i>
+          <a href="javascript:void(0)" Class="customer" style="margin-right:17px;">用户</a>
+        </div>
+    </header>
+    <div style="height: 100%" class="body">
+         <div id="header" style="background-color: #ffffff; height:44px;line-height: 44px">
+              <ul>
+                  <li class="flex1">
+                        <input type="text" class="search-input" placeholder="请输入内容"/>
+                        <div class="calloff" onclick="closeSearch()">取消</div>
+                        <span class="search-advertise" id="search-advertise"></span>
+                  </li>
+                </ul>
+
+         </div>
+         <div class="middles">热门搜索</div>
+            <div class="bigbox">
+                <ul class="ul">
+                    <li>黑科技</li>
+                    <li>无线耳机</li>
+                    <li>人工智能</li>
+                    <li>iphoneX</li>
+                    <li>surface book2</li>
+                    <li>纳米眼药水</li>
+                    <li>隐形电视</li>
+                    <li>懒人清扫神器</li>
+                </ul>
+            </div>
+            <div class="history">
+                <span>搜索历史</span>
+              <div class="delete">
+            清空  <img src="../images/search/remove.png">  </div>
+            </div>
+            <div class="bigbox">
+              <ul class="ul">
+                <li>小辣椒手机</li>
+                <li>屏幕指纹录入解锁</li>
+                <li>夏普mini发布</li>
+                <li>远程充电技能让电量也不会崩了</li>
+              </ul>
+            </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      function closeSearch(){
+        api.closeWin({
+            name: 'search'
+        });
+
+      }
+  </script>
+  </html>

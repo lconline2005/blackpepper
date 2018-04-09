@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文章详情</title>
+</head>
+<style type="text/css">
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+
+input {
+    border: none;
+}
+
+ul,
+li,
+ol {
+    list-style: none;
+}
+
+h1,h2,h3,h4,h5 {
+    font-weight: 400;
+}
+
+img {
+    display: block;
+    width: 60%;
+}
+
+header {
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    background: url("../images/same_content/Header.jpg")
+}
+
+header .back {
+    height: 100%;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+header .back span {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-right: none;
+    transform: rotate(45deg);
+}
+
+header h2 {
+    color: #fff;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+}
+
+header .share {
+    display: inline-block;
+    height: 100%;
+    width: 55px;
+    background: url("../images/articalDetails/fenxiang.png") no-repeat center;
+    background-size: 100%;
+}
+
+.main {
+    padding: 55px 15px 15px;
+}
+
+.main .title {
+    font-size: 24px;
+    padding-bottom: 5px;
+}
+
+.main .time {
+    color: #a1a1a1;
+    padding-bottom: 6px;
+}
+
+.main .content p {
+    margin-bottom: 5px;
+}
+
+.main .source {
+    text-align: right;
+}
+
+.news {
+    padding-left: 15px;
+}
+
+.news h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.news ul {
+    display: flex;
+    overflow-x: auto;
+}
+
+.news ul::-webkit-scrollbar {
+    /* 隐藏滚动条 */
+    display: none
+}
+
+.news li {
+    border: 1px solid #eee;
+    padding: 3px;
+    margin-right: 3px;
+}
+
+.news li img {
+    width: 100px;
+    height: 80px;
+    margin-right: 5px;
+}
+
+.news li a {
+    display: flex;
+}
+
+.news a p {
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 20px;
+}
+
+.news a span {
+    font-size: 14px;
+    color: #a7a7a7;
+}
+
+.comment {
+    padding-left: 15px;
+    margin-top: 5px;
+    padding-bottom: 50px;
+}
+
+.comment-empty {}
+
+.comment-empty p {
+    text-align: center;
+    color: #a7a7a7;
+    height: 50px;
+    line-height: 50px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ebebeb;
+}
+
+footer .write-text {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .write-text input {
+    height: 75%;
+    background-color: #fff;
+    width: 90%;
+    border-radius: 5px;
+    color: #666666;
+    font-size: 18px;
+    text-indent: 10px;
+}
+
+footer a {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer a i {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    margin-top: 22px;
+}
+
+footer .like i {
+}
+
+footer .post i {
+}
+
+.top-get {
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    background: url("../images/articalDetails/up.png");
+    background-size: 100% 100%;
+    transition: all 1s;
+}
+</style>
+<body>
+    <!-- 头部开始 -->
+    <header>
+        <a href="javascript:;" class="back">
+            <span></span>
+        </a>
+        <h2>文章详情</h2>
+        <span class="share" onclick="openShareOther()"></span>
+    </header>
+    <div class="main">
+        <h3 class="title">&nbsp;&nbsp;价格比touch低30倍，这投影仪价格和索尼互抗</h1>
+            <div class="time">
+                <span>时间：2018/03/20</span>
+                <span>浏览次数：200008</span>
+            </div>
+            <div class="content">
+                <p>尼本次展示的两台原型机中，一台是在去年 SXSW 上亮相的垂直扫描台式投影，一台是今年的新版本，长得很像烤面包机。不过这两台原型机都支持手指追踪技术以及深度感知（物体移动）技术，它们还能分辨手指触摸 “屏幕”
+                    和将手放在 “屏幕” 上的区别。</p>
+                <p>
+                    说是在触摸 “屏幕” ，可实际上，这这两台原型机并没有搭载显示屏，不过从它们所拥有的技术可以将任何地方都变成可触摸的 “屏幕”。
+                </p>
+                <p>
+                    与去年展示的那台垂直悬挂的原型机与去年展示的那台垂直悬挂的原型机不同，今年的这台可以轻易的摆放在任意平面的任何角度，放好后，它会自动调节角度使投射出的 “屏幕” 达不同，今年的这台可以轻易的摆放在任意平面的任何角度，放好后，它会自动调节角度使投射出的
+                    “屏幕” 达到最佳的显示效果。
+                </p>
+                <div>
+                    <p class="source">来源于：网络</p>
+                </div>
+            </div>
+    </div>
+    <div class="news">
+        <h3>相关资讯</h3>
+        <ul>
+            <li>
+                <a href="javascript:;">
+                    <img src="http://pic.people.com.cn/NMediaFile/2018/0320/MAIN201803200900000030356772740.jpg" alt="">
+                    <div>
+                        <p>北京春日晚来迟 大熊猫犯“春困”萌态百出</p>
+                        <span>2018/3/24</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="http://pic.people.com.cn/NMediaFile/2018/0323/MAIN201803231008000066137913691.JPG" alt="">
+                    <div>
+                        <p>浙江舟山边防救助一只国家二级野生保护动物灰鹭</p>
+                        <span>2018/3/24</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="comment">
+        <h4>评论</h4>
+        <!-- 当评论内容为空时应显示 -->
+        <div class="comment-empty">
+            <p>
+                暂无评论，快抢做沙发
+            </p>
+        </div>
+        <!-- 当有评论时，显示如下评论内容 -->
+        <div class="comment-content">
+
+        </div>
+    </div>
+    <footer>
+        <div class="write-text">
+            <input type="text" name="" id="" placeholder="写评论">
+        </div>
+        <a class="like" href="javascript:;">
+            <i><img src="../images/articalDetails/good.png" alt="" style="width:90%"></i>333
+        </a>
+        <a class="post" href="javascript:;">
+            <i><img src="../images/articalDetails/collection.png" alt="" style="width:90%"></i>
+        </a>
+        <a class="post" href="javascript:;">
+            <i><img src="../images/articalDetails/share.png" alt="" style="width:90%"></i>
+        </a>
+    </footer>
+    <div class="top-get">
+    </div>
+</body>
+<script>
+    let toTop = document.querySelector(".top-get")
+    toTop.addEventListener("click", function () {
+        window.scrollTo(0,0)
+    })
+</script>
+
+</html>

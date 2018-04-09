@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+  <style>
+      * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+      }
+	html{
+
+	}
+     body {
+       font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+       background-color: #f1f1f1;
+       overflow-x: hidden;
+     }
+       a {
+        text-decoration: none;
+        color: #000;
+       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        display: block;
+      }
+
+        input {
+        border: none;
+      }
+
+         ul,li,ol {
+        list-style: none;
+     }
+
+        h1, h2,h3,h4,h5 {
+         font-weight: 400;
+        }
+        body,html{
+           width: 100%;height: 100%; margin: 0; padding: 0;
+           /* overflow: hidden; */
+        }
+         body{
+           background:#f1f1f1;
+        }
+         ul li{
+           list-style-type:none;
+        }
+         .myindex{
+           position:relative;
+           background: #fff;
+           overflow-x:hidden
+         }
+         /*my-header*/
+         .my-header{
+           width: 100%;
+           height:9rem;
+           background:url('../images/my/headerMy.png') no-repeat;
+           background-size:100%;
+
+         }
+         .my-header .tip{
+           position: absolute;
+           width: 40px;
+           height: 50px;
+           right:-6px;
+           top:-7px;
+           background:url(../images/my/headerRing.png) no-repeat;
+           -webkit-background-size: 100% 100%;
+           background-size: 100% 100%;
+         }
+         .my-header .set {
+          background:url(../images/my/headerset.png) no-repeat;
+          position: absolute;
+          width: 40px;
+          height: 50px;
+          top:-8px;
+         -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+         }
+         .my-header img{
+          height: 30px;
+          width: 10%;
+        }
+
+          .nick_img img{
+           width: 60px;
+           height: 60px;
+         }
+          .nickname{
+           font-size:13px;
+           color:#7b7b7b;
+           padding-top: 8px;
+         }
+          .nick{
+           width:80px;
+           height:80px;
+           position:absolute;
+           top:50%;
+           left:50%;
+           margin-left:-40px;
+           top: 40px;
+           text-align: center;
+         }
+         .thisopp{
+           text-align: center;
+           display: inline-block;
+           font-size: 9px;
+           color: #7c7c7c;
+           padding-top: 5px;
+         }
+          .interest{
+           height: 35px;
+           text-align: center;
+           line-height: 18px;
+        }
+          .interest span{
+           text-align: center;
+           display: inline-block;
+         }
+          .footer{
+           line-height: 40px;
+         }
+
+          .participate{
+           position: absolute;
+           float: left;
+           width: 50.3%;
+           height: 50px;
+           text-align: center;
+           font-size: 15px;
+           color: #3c3c3c;
+           padding-top: -10px;
+         }
+         .concern{
+          margin-left: auto;
+          margin-right: auto;
+          width: 108%;
+          height: 50px;
+          text-align: center;
+          font-size: 15px;
+          color: #3c3c3c;
+          padding-top: -10px;
+       }
+
+         .fans{
+          float: right;
+          width: 40.3%;
+          height: 50px;
+          margin-top: -50px;
+          text-align: center;
+          font-size: 15px;
+          color: #3c3c3c;
+          padding-top: -10px;
+      }
+
+         .item_content .phone,.item_content .mine{
+          margin-bottom: 10px;
+     }
+         .item_content a {
+          display:flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          padding: 10px;
+          background-color: #fff;
+          align-items: center;
+          border-bottom: 1px solid #eee;
+      }
+         .item_content a img{
+          width: 25px;
+          display: inline-block;
+          padding-left: 8px;
+   }
+         .item_content a .title{
+          vertical-align: top;
+          font-size: 15px;
+          color: #3c3c3c;
+     }
+        .item_content a .arrow{
+         display: inline-block;
+         border-right: 1px solid #666;
+         border-bottom: 1px solid #666;
+         width: 13px;
+         height: 13px;
+         transform: rotate(-45deg);
+         -webkit- transform: rotate(-45deg);
+     }
+
+        .notmean{
+         display: inline-block;
+         font-size: 12px;
+         color: #7b7b7b;
+         position: absolute;
+         right: 28px;
+         top:250px;
+   }
+       .footer>div>i{
+         border-left:1px solid #cfcfcf;
+         border-right:1px solid #cfcfcf;
+         margin-left: 25px;
+    }
+  </style>
+</head>
+<body>
+  <div class="myindex">
+    <div class="my-header">
+        <div class="tip"></div>
+        <div class="set" onclick="Openset()"></div>
+    </div>
+    <div class="nick">
+          <div class="nick_img">
+          <img src="../images/my/headerSculpture.png" ></div>
+          <div class="nickname">昵称</div>
+          <span class="thisopp" onclick="openLogin()">点击登录</span>
+    </div>
+    <div class="footer">
+          <div class="participate">参与&nbsp;<span>299</span><i></i></div>
+          <div class="concern">关注&nbsp;<span>299</span><i></i></div>
+          <div class="fans">粉丝&nbsp;<span>299</span></div>
+    </div>
+  </div>
+        <div class="item_content">
+            <div class="phone">
+                <a href="javascript:;" onclick="OpenDeviceShare()" >
+                    <div>
+                        <img src="../images/same_content/bodyshare.png" alt="">
+                        <span class="title">共享设备</span>
+                    </div>
+                    <span class="arrow"></span>
+                </a>
+                <a href="javascript:;" onclick="OpenBindingCellPhone()">
+                    <div>
+                        <img src="../images/same_content/bodytel.png" alt="">
+                        <span class="title">手机<span class="notmean">未定义</span></span>
+                    </div>
+                    <span class="arrow"></span>
+                </a>
+            </div>
+            <div class="mine">
+                <a href="javascript:;" onclick="OpenmyCollection()">
+                    <div>
+                        <img src="../images/my/bodycollect.png" alt="">
+                        <span class="title">我的收藏</span>
+                    </div>
+                    <span class="arrow"></span>
+                </a>
+                <a href="javascript:;" onclick="OpenMyReport()">
+                    <div>
+                        <img src="../images/same_content/bodypublish.png" alt="">
+                        <span class="title">我的发表</span>
+                    </div>
+                    <span class="arrow"></span>
+                </a>
+                <a href="javascript:;">
+                    <div>
+                        <img src="../images/same_content/bodyinform.png" alt="">
+                        <span class="title">我的订单</span>
+                    </div>
+                    <span class="arrow"></span>
+                </a>
+            </div>
+
+            <div class="msg">
+                <a href="javascript:;" onclick="OpAgreement()">
+                    <div>
+                        <img src="../images/my/bodymessage.png" alt="">
+                        <span class="title">意见反馈</span>
+                    </div>
+                    <span class="arrow"></span>
+                </a>
+                <a href="javascript:;" onclick="OpenSuggestionFeedback()">
+                    <div>
+                        <img src="../images/my/bodyuserbook.png" alt="">
+                        <span class="title">用户协议</span>
+                    </div>
+                    <span class="arrow"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+function OpenmyAbount(){
+   api.openWin({
+       name: 'about',
+       url: 'About.html',
+       pageParam: {
+           name: 'test'
+       }
+   });
+ }
+ function OpenmyCollection(){
+   api.openWin({
+       name: 'MyCollection',
+       url: 'MyCollection.html',
+       pageParam: {
+           name: 'test'
+       }
+   });
+ }
+ function Openset(){
+   api.openWin({
+       name: 'set',
+       url: 'Set.html',
+       pageParam: {
+           name: 'test'
+       }
+   });
+ }
+ function OpAgreement(){
+   api.openWin({
+       name: 'Agreement',
+       url: 'Agreement.html'
+   });
+ }
+ function OpenDeviceShare(){
+   api.openWin({
+       name: 'DeviceShare',
+       url: 'DeviceShare.html'
+   });
+ }
+ function OpenSuggestionFeedback(){
+   api.openWin({
+       name: 'SuggestionFeedback',
+       url: 'SuggestionFeedback.html'
+   });
+ }
+ function OpenBindingCellPhone(){
+   api.openWin({
+       name: 'BindingCellPhone',
+       url: 'BindingCellPhone.html'
+   });
+ }
+ function OpenMyReport(){
+   api.openWin({
+       name: 'MyReport',
+       url: 'MyReport.html'
+   });
+
+ }
+ function openLogin(){
+   api.openWin({
+       name: 'Login',
+       url: 'Login.html'
+   });
+
+ }
+</script>
+</html>

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title发现</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <style>
+          body,html{
+            width: 100%;height: 100%; margin: 0; padding: 0;
+          }
+          ul li{
+            list-style-type: none;
+          }
+
+          .find_style{
+            max-width:555px;  margin:0 auto;
+          }
+/*picture carousel css*/
+          .content{
+            overflow:hidden;  height: 153px;  position: relative;
+          }
+
+          .scroll{
+            position: absolute; height: 153px; width: 2898px;
+          }
+
+          .scroll img{
+            float: left;
+            height:100%;
+            width: 100%;
+          }
+
+          .content ol{
+            position: absolute; width: 47px; bottom: 5px; left:50%; margin-left: -23px;
+          }
+
+          .content ol li{
+            float: left;
+            width:5px;
+            height: 5px;
+            cursor: pointer;
+            background-color: #383131;
+            border-radius: 50%;
+            margin-left: 2px;
+            border: 1px solid #666;
+          }
+          .content ol li.current{
+            background: #fff;
+            border: 1px solid #fff;
+          }
+          .arrow {
+            position: absolute;
+            top:70px;
+            z-index: 2;
+            width: 40px;
+            height: 40px;
+            font-size: 36px;
+            line-height: 39px;
+            text-align: center;
+            color: #000;
+            cursor: pointer;
+          }
+/*picture carousel css end*/
+
+/*mue*/
+          .mue{
+            width: 100%;
+            height: 35px;
+            z-index: 1;
+          }
+
+          .mue div{
+            float: left;
+            height: 100%;
+            width: 20%;
+            text-align: center;
+            line-height: 35px;
+            font-size: 15px;
+            color: #808080;
+          }
+          .mue div.hover{
+            color: #000;
+            font-weight: bold;
+          }
+/*mue end*/
+
+/*article*/
+          section .sect{
+            display: none;
+          }
+          section .current{
+            display: block;
+          }
+
+          .section{
+            width: 100%;
+          }
+          .section .article{
+            border-bottom: 5px solid #e1e1e1;
+            padding: 7.5px;
+            padding-top: 0;
+            margin-bottom: 6px;
+          }
+          .section .article .picture{
+            position: relative;
+            width: 100%;
+            height: 130px
+          }
+          .section .article .picture img{
+            width: 100%;
+            height: 100%;
+          }
+          .section .article .picture .icotext{
+            position: absolute;
+            left: 4px;
+            bottom: 4px;
+            color: #fff;
+            font-size: 8px;
+            line-height: 30px;
+            display: inline-flex;
+          }
+          .section .article .picture .icotext img{
+            width: auto;
+            height: 26px;
+            display: inline-flex;
+          }
+          .section .article .picture .icotext div{
+            display: inline-flex;
+            margin-left: 3px;
+          }
+          .section .article .text{
+            width: 100%;
+          }
+          .section .article .text .title{
+            color: #1a1a1a;
+            font-size: 15px;
+            padding: 5px 0 5px 0;
+          }
+          .section .article .text .content{
+            color:#5e5e5e;
+            font-size:15px;
+            line-height: 25px;
+            padding-bottom: 10px;
+          }
+          .section .article .ltls{
+            position: relative;
+            height: 20px;
+            font-size: 10px;
+            line-height: 15px;
+          }
+          .section .article .ltls .ll{
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            padding-left: 25px;
+          }
+          .section .article .ltls .like{
+            background: url('../images/discovery/discovery_like.png') no-repeat;
+              background-size: 15%;
+          }
+          .section .article .ltls .comment{
+            background: url('../images/discovery/discovery_talk.png') no-repeat;
+            left:22.5%;
+            background-size: 15%;
+          }
+          .section .article .ltls .read{
+            background: url('../images/discovery/discovery_look.png') no-repeat;
+            left: 45%;
+            background-size: 15%;
+          }
+          .section .article .ltls .share{
+            background: url('../images/discovery/discovery_share.png') no-repeat;
+            right:0%;
+            width: 1%;
+            background-size: 60%;
+          }
+
+/*article end*/
+
+        /*video*/
+        .section .video{
+          border-bottom: 5px solid #e1e1e1;
+          padding: 7.5px;
+          padding-top: 0;
+        }
+        .section .video .picture{
+          position: relative;
+          width: 100%;
+          height: 143px;
+        }
+        .section .video .picture .img{
+          width: 100%;
+          height: 100%;
+        }
+        .section .video .picture .icotext{
+          position: absolute;
+          left: 4px;
+          bottom: 4px;
+          color: #fff;
+          font-size: 8px;
+          line-height: 30px;
+          display: inline-flex;
+        }
+        .section .video .picture .icotext img{
+          width: auto;
+          height: 26px;
+          display: inline-flex;
+        }
+        .section .video .picture .playbtn{
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-left: -4%;
+          margin-top: -4%;
+        }
+        .section .video .picture .playbtn img{
+          width: 40px;
+        }
+        .section .video .picture .icotext div{
+          display: inline-flex;
+          margin-left: 3px;
+        }
+        .section .video .picture .playlength{
+          position: absolute;
+          right: 4px;
+          bottom: 4px;
+          color: #fff;
+          font-size: 8px;
+          background-color: #666;
+          border-radius: 5px;
+          width: 25px;
+          text-align: center;
+        }
+        .section .video .text{
+          width: 100%;
+        }
+        .section .video .text .title{
+          color: #1a1a1a;
+          font-size: 15px;
+          padding: 5px 0 5px 0;
+        }
+        .section .video .text .content{
+          color:#5e5e5e;
+          font-size:15px;
+          line-height: 25px;
+          padding-bottom: 10px;
+        }
+        .section .video .ltls{
+          position: relative;
+          height: 20px;
+          font-size: 10px;
+          line-height: 15px;
+        }
+        .section .video .ltls .ll{
+          position: absolute;
+          width: 100px;
+          height: 30px;
+          padding-left: 25px;
+        }
+        .section .video .ltls .like{
+          background: url('../images/discovery/discovery_like.png') no-repeat;
+            background-size: 15%;
+        }
+        .section .video .ltls .comment{
+          background: url('../images/discovery/discovery_talk.png') no-repeat;
+          left:22.5%;
+          background-size: 15%;
+        }
+        .section .video .ltls .read{
+          background: url('../images/discovery/discovery_look.png') no-repeat;
+          left: 45%;
+          background-size: 15%;
+        }
+        .section .video .ltls .share{
+          background: url('../images/discovery/discovery_share.png') no-repeat;
+          right:0%;
+          width: 1%;
+          background-size: 60%;
+        }
+        /*video end*/
+
+      </style>
+  </head>
+  <body>
+    <div class="find_style">
+        <!-- picture carousel -->
+      <div class="content">
+        <div class="scroll" id="scroll">
+            <img src="../images/discovery/discovery_banner1.png" / alt="1">
+            <img src="../images/discovery/discovery_banner2.png" / alt="2">
+            <img src="../images/discovery/discovery_banner3.png" / alt="3">
+            <img src="../images/discovery/discovery_banner1.png" / alt="4">
+            <img src="../images/discovery/discovery_banner2.png" / alt="3">
+        </div>
+        <ol id='ridusTolle'>
+          <li class="current"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+      </div>
+        <!-- picture carousel-end -->
+
+        <!-- mue -->
+        <div class="mue" id="mueToggle">
+          <div class="click hover">推荐</div>
+          <div class="click">新品</div>
+          <div class="click">资讯</div>
+          <div class="click">测评</div>
+          <div class="click">技巧分享</div>
+        </div>
+        <!-- mue-end -->
+
+        <!-- main -->
+    <section class="section">
+      <div class="sect current" id='sectRcmd'>
+
+        <div class="article">
+            <div class="picture">
+                <img class="img" src="../images/discovery/article_image1.png" alt="">
+                <div class="icotext">
+                    <img src="../images/discovery/headerpicture1.png" alt="">
+                    <div>风一样的男子</div>
+                </div>
+            </div>
+            <div class="text">
+                <div class="title">价格比Xpeia Touch低了三十多倍！这投影仪能和索尼互杠</div>
+            </div>
+            <div class="ltls">
+                <div class="ll like"><div>6666</div></div>
+                <div class="ll comment"><div>6666</div></div>
+                <div class="ll read"><div>6666</div></div>
+                <div class="ll share"></div>
+            </div>
+        </div>
+
+        <div class="video">
+          <div class="picture">
+              <img class="img" src="../images/discovery/article_image1.png" alt="">
+              <div class="icotext">
+                <img src="../images/discovery/headerpicture1.png" alt="">
+                <div>风一样的男子</div>
+              </div>
+              <div class="playbtn"><img src="../images/discovery/discovery_playbtn.png" alt=""></div>
+              <div class="playlength">1:30</div>
+          </div>
+          <div class="text">
+              <div class="title">价格比Xpeia Touch低了三十多倍！这投影仪能和索尼互杠</div>
+          </div>
+          <div class="ltls">
+              <div class="ll like"><div>6666</div></div>
+              <div class="ll comment"><div>6666</div></div>
+              <div class="ll read"><div>6666</div></div>
+              <div class="ll share"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+        <!-- main-end -->
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript">
+  //定义切换clss
+    var tid = 0;
+    var btns = document.getElementById('mueToggle').getElementsByTagName('div');
+    for(var j=0;j<btns.length;j++){
+        btns[j].index = j;
+        btns[j].onclick =  function(){
+            for(var x=0;x<btns.length;x++){
+                btns[x].className = '';
+              }
+              this.className = 'hover';
+              htmls = '';
+              discoveryDate(this.index);
+              tid = this.index;
+        }
+    }
+      var numb = 0;
+      var countNum = 0;
+      var countN = 0;
+      apiready = function(){
+          discoveryDate(0,0);
+          //下拉刷新
+              api.setRefreshHeaderInfo({
+                loadingImg: 'widget://image/refresh.png',
+                bgColor: '#000',
+                textColor: '#fff',
+                textDown: '拉我试试',
+                textUp: '松开刷新...'
+              } , function(ret, err) {
+                htmls = '';
+                discoveryDate(tid,0)
+                numb=0;
+                api.refreshHeaderLoadDone();
+              });
+          //上拉加载
+          api.addEventListener({
+            name:'scrolltobottom',
+            extra:{
+            threshold:0 //设置距离底部多少距离时触发，默认值为0，数字类型
+            }
+          }, function(ret, err){
+            numb++;
+            discoveryDate(tid,numb);
+        })
+      }
+        var htmls = '';
+
+        function discoveryDate(tid,num){
+          if(numb > countN){
+            numb = countN;
+            num = numb;
+            return;
+            // htmls = '';
+          }
+        api.ajax({
+            url:'http://www.juzzn.com/discovery.php',
+            method:'post',
+            dataType:'json',
+            data: {
+                   values: {
+                       　tid:tid,num:num
+                   }
+               }
+        },function(ret, err){
+            countN = ret.countNum;
+            if(ret.status == 1){
+              var data = ret.data;
+              // htmls = '';
+              for(var i=0;i<data.length;i++){
+                htmls += '<div class="article">';
+                    htmls += '<div class="picture">';
+                      //图片数据
+                        htmls += '<img width="100%" src="http://www.juzzn.com/data/attachment/'+data[i]['pic']+'">';
+                        htmls +="<div class='icotext'>";
+                        //用户头像
+                          htmls += '<img src="'+data[i]['avatar']+'">';
+                        //用户名字
+                          htmls += '<div>'+data[i]['username']+'</div>';
+                        htmls += '</div>';
+                    htmls += '</div>';
+                    //文章标题
+                    htmls += '<div class="text">';
+                      htmls += '<div class="title">'+data[i]['title']+'</div>';
+                    htmls += '</div>';
+                    //文章主体
+                    htmls += '<div class="ltls">';
+                      htmls +='<div class="ll like" onclick="like('+data[i]['aid']+')"><div id="like'+data[i]['aid']+'">'+data[i]['likeNum']+'</div></div>';
+                      htmls +='<div class="ll comment"><div>6666</div></div>';
+                      htmls +='<div class="ll read"><div>6666</div></div>';
+                      htmls +='<div class="ll share"><div></div></div>';
+                    htmls += '</div>';
+              htmls += '</div>';
+            }
+          }else if (ret.status == 2) {
+              htmls = '';
+              htmls ='<div style="text-align:center;line-height:50px;">没有数据</div>'
+          }else{
+              alert(err.msg);
+          }
+
+            $api.html($api.byId('sectRcmd'),htmls);
+        });
+      }
+      window.onload = function(){
+        autoplay();
+      }
+      //封装获取class函数
+      function getClass(tagName,className){
+          if(document.getElementsByClassName){
+              return document.getElementsByClassName(className);
+          }else{
+              var args = document.getElementsByTagName(tagName);
+              var argsArr = [];
+              for(var i=0;i<args.length;i++){
+                  if(args[i].class==className){
+                      argsArr[argsArr.length] = args[i];
+                  }
+              }
+              return argsArr;
+          }
+      }
+
+      //animiate动画效果封装
+      function runIng(obj,attr,target,fn){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function(){
+        var cur = 0;
+        if(attr == "opacity"){
+          cur = Math.round(parseFloat(getstyle(obj,attr))*100);
+        }else{
+          cur = parseInt(getstyle(obj,attr));
+        }
+          var speed = (target-cur)/8;
+          speed = speed>0?Math.ceil(speed):Math.floor(speed);
+
+          if(cur == target){
+            clearInterval(obj.timer);
+              if(fn){
+                fn();
+              }
+          }else{
+              if(attr == "opacity"){
+                  obj.style.filter = "alpha(opacity="+(cur+speed)+")";
+                  obj.style.opacity = (cur+speed)/100;
+                }else{
+                  obj.style[attr] = cur + speed + "px";
+                }
+               }
+            },30)
+        }
+      //获取样式
+      function getstyle(obj,name){
+      if(obj.currentStyle){
+          return obj.currentStyle[name];
+      }else{
+        return getComputedStyle(obj,false)[name];
+      }
+    }
+    //end
+      // 轮播图
+      var listpi = document.getElementById('scroll').getElementsByTagName('img');//获取图片数量
+      var winWdith = document.body.clientWidth;//获取屏幕宽度
+      var list = document.getElementById('scroll');//获取大盒子
+      var prev= document.getElementById('prev');
+      var next= document.getElementById('next');
+      var ridusTolles = document.getElementById('ridusTolle').getElementsByTagName('li')
+      var listLength;
+      var listpiLast =listpi[0].cloneNode(true);//克隆第一张图片
+      list.appendChild(listpiLast)
+      listLength=list.style.width = listpi.length*winWdith+'px';//定义大盒子长度
+      //定义图片长度
+      for(var i = 0;i<listpi.length;i++){
+        listpi[i].style.width = winWdith+'px'
+      }
+      //轮播
+      var num = 0;
+      function animate(){
+        num++;
+        if(num==listpi.length){
+          num=1;
+          list.style.left='0'
+        }
+        for (var i = 0; i < ridusTolles.length; i++) {
+          ridusTolles[i].className='';
+        }
+        if(num==listpi.length-1){
+          ridusTolles[0].className='current'
+        }
+        else{
+          ridusTolles[num].className='current'
+        }
+        runIng(list,"left",-num*winWdith,null);
+      }
+      //自动轮播
+      var timer;
+      function autoplay(){
+          clearInterval(timer)
+          timer = setInterval(function(){
+            animate()
+          },2000)
+      }
+      //滑动到指定位置定死
+      var mueToggle = document.getElementById('mueToggle')
+      window.onscroll = function(){
+        var bodyScrollTop = document.body.scrollTop;
+        if(bodyScrollTop>153){
+          mueToggle.style.position = 'fixed'
+          mueToggle.style.top = '0px'
+          mueToggle.style.background = '#fff'
+        }else{
+          mueToggle.style.position = 'static'
+        }
+      }
+      //点赞
+      var userdata = $api.getStorage('userdata');//得出用户数据
+      function like(aid){
+        if(userdata){
+          api.ajax({
+              url:'http://www.juzzn.com/like.php',
+              method:'post',
+              dataType:'json',
+              data: {
+                     values: {
+                       aid:aid,username:userdata['username'],uid:userdata['uid']
+                   }
+               }
+          },function(ret, err){
+            if(ret.status == 1){
+                $api.html($api.byId('like'+aid),ret.data);
+            }else {
+              alert(ret.msg);
+            }
+          });
+        }else{
+          // alert('请先登录')
+        }
+      }
+  </script>
+  </html>

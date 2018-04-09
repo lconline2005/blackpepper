@@ -1,0 +1,409 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>社区</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+        body,html{
+          width: 100%;height: 100%;margin: 0;padding: 0;
+        }
+        ul li,ol li{
+          list-style-type: none;
+        }
+        /*导航栏*/
+        span{
+          height: 28px;
+          width: 100%;
+          line-height: 28px;
+          font-size: 16px;
+          background: #fff;
+          border-top: 1px solid #e1e1e1;
+          border-bottom: 1px solid #e1e1e1;
+        }
+        span>ul>li{
+          float: left;
+          width: 33.33%;
+          text-align: center;
+          color: #808080;
+        }
+        span>ul>li.hover{
+          color:#1a1a1a;
+          font-style:normal;
+          font-weight: bold;
+        }
+        section>div{
+          display: none;
+        }
+        section>div.current{
+          display:block;
+        }
+        /*导航栏 end*/
+        .maxbox{display: none;}
+        .maxbox.current{display: block;}
+        /*main*/
+        .maxbox{
+          background-color: #f7f7f7;
+          height: 100%;
+        }
+        .artical{
+          height: 100%;
+          width: 96%;
+          padding: 0 2% 1% 2%;
+          margin-bottom: 10px;
+          background-color: #fff;
+          display: table;
+        }
+        .artical .head{
+          width: 100%;
+          padding-top: 8px;
+          display: flex;
+          align-items: center;
+          position: relative;
+        }
+        .artical .head .h{
+          float: left;
+        }
+        .artical .head .headerimg{
+          width: 46px;
+          height: 46px;
+        }
+        .artical .head .headerimg img{
+          border-radius: 50%;
+          width: 100%;
+        }
+        .artical .head .headername{
+          padding-left: 8px;
+        }
+        .artical .head .headername .hname{
+          font-size: 12px;
+          color: #0f0f0f;
+          position: absolute;
+          top: 12px;
+        }
+        .artical .head .headername .htime{
+          font-size: 8px;
+          color: #808080;
+          position: absolute;
+          bottom: 6px;
+        }
+        .artical .head .headername .himg{
+          position: absolute;
+          width: 20px;
+          top: 12px;
+          right: 0;
+          width: 46px;
+          height: 20px;
+        }
+        .artical .head .headername .himg img{
+          width: 100%;
+          height: 100%;
+        }
+        .artical .text{
+          padding-top: 10px;
+        }
+        .artical .text .title{
+          font-size: 16px;
+          color: #111;
+          padding-bottom: 14px;
+        }
+        .artical .text .textmain{
+          font-size: 14px;
+          color: #303030;
+          line-height: 20px;
+          overflow:hidden;
+          text-overflow:ellipsis;
+          display:-webkit-box;
+          -webkit-line-clamp:3;
+          -webkit-box-orient:vertical;
+        }
+        .artical .list{
+          padding: 8px 0 10px 0;
+          font-size: 10px;
+          color: #040404;
+          line-height: 10px;
+          text-align: center;
+          height: 20px;
+        }
+        .artical .list .like img{
+          width: 22px;
+        }
+        .artical .list .ltls{
+          float: left;
+          margin-right: 16px;
+        }
+        .artical .list .ltls .d{
+          float: right;
+          height: 100%;
+          line-height: 20px;
+        }
+        .artical .list .ltls img{
+          margin-right: 6px;
+        }
+        .artical .list .talk img{
+          width: 20px;
+        }
+        .artical .list .look img{
+          width: 24px;
+        }
+        .artical .list .share{
+          float: right;
+          margin-right: 0;
+        }
+        .artical .list .share img{
+          margin-right: 0;
+          width: 20px;
+        }
+        .artical .picture{
+          width: 100%;
+          float: left;
+          padding: 10px 0 10px 0;
+        }
+        .artical .picture>div{
+          width: 31%;
+          float: left;
+          margin-right: 2%;
+        }
+        .artical .picture img{
+          width: 100%;
+          height: 100%;
+        }
+        /*main end*/
+    </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+    <span id="span">
+      <ul>
+        <li class="hover menu">本周热门</li>
+        <li class="menu">最新发布</li>
+        <li class="menu">最多回复</li>
+      </ul>
+    </span>
+  <!-- 导航栏 -->
+
+  <!-- main -->
+    <section class="aui-content">
+        <div class="maxbox current" id="maxbox">
+            <div class="artical">
+                <div class="head">
+                    <div class="headerimg h"><img src="../images/community/community_header1.png" alt=""></div>
+                    <div class="headername h">
+                        <div class="hname">风一样的男子</div>
+                        <div class="htime">30分钟前</div>
+                        <div class="himg"><img src="../images/community/attention.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="text" onclick="openCommunityDetails()">
+                    <div class="title">机器人“慧眼”巡逻频率是人工的21倍</div>
+                    <div class="textmain">案涉及两个啥感觉拉苏格兰萨洛克金刚砂咖喱鸡块阿斯钢很骄傲圣诞快乐撒了个黄金</div>
+                </div>
+                <div class="list">
+                    <div class="ltls like"><img src="../images/community/like.png" alt=""><div class="d">2336</div></div>
+                    <div class="ltls talk"><img src="../images/community/talk.png" alt=""><div class="d">3745</div></div>
+                    <div class="ltls look"><img src="../images/community/look.png" alt=""><div class="d">8930</div></div>
+                    <div class="ltls share"><img src="../images/community/share.png" alt=""></div>
+                </div>
+            </div>
+
+            <div class="artical">
+                <div class="head">
+                    <div class="headerimg h"><img src="../images/community/community_header2.png" alt=""></div>
+                    <div class="headername h">
+                        <div class="hname">科技人</div>
+                        <div class="htime">30分钟前</div>
+                        <div class="himg"><img src="../images/community/attention.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="text" onclick="openCommunityDetails()">
+                    <div class="title">机器人“慧眼”巡逻频率是人工的21倍</div>
+                    <div class="textmain">案涉及两个啥感觉拉苏格兰萨洛克金刚砂咖喱啥都看见回复啥的感觉来看啥都管理看鸡块阿沙路口的价格杀多了个健康阿萨德国际斯钢很骄傲圣诞快乐撒了个黄金</div>
+                </div>
+                <div class="picture">
+                    <div><img src="../images/community/community1.png" alt=""></div>
+                    <div class="pict"><img src="../images/community/community2.png" alt=""></div>
+                    <div><img src="../images/community/community3.png" alt=""></div>
+                </div>
+                <div class="list">
+                    <div class="ltls like"><img src="../images/community/like.png" alt=""><div class="d">2336</div></div>
+                    <div class="ltls talk"><img src="../images/community/talk.png" alt=""><div class="d">3745</div></div>
+                    <div class="ltls look"><img src="../images/community/look.png" alt=""><div class="d">8930</div></div>
+                    <div class="ltls share"><img src="../images/community/share.png" alt=""></div>
+                </div>
+            </div>
+
+            <div class="artical">
+                <div class="head">
+                    <div class="headerimg h"><img src="../images/community/community_header3.png" alt=""></div>
+                    <div class="headername h">
+                        <div class="hname">科技人</div>
+                        <div class="htime">30分钟前</div>
+                        <div class="himg"><img src="../images/community/attention.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="text" onclick="openCommunityDetails()">
+                    <div class="title">机器人“慧眼”巡逻频率是人工的21倍</div>
+                    <div class="textmain">案涉及两个啥感觉拉苏格兰萨洛克金刚砂咖喱啥都看见回复啥的感觉来看啥都管理看鸡块阿沙路口的价格杀多了个健康阿萨德国际斯钢很骄傲圣诞快乐撒了个黄金</div>
+                </div>
+                <div class="picture">
+                    <div><img src="../images/community/community4.png" alt=""></div>
+                    <div class="pict"><img src="../images/community/community5.png" alt=""></div>
+                    <div></div>
+                </div>
+                <div class="list">
+                    <div class="ltls like"><img src="../images/community/like.png" alt=""><div class="d">2336</div></div>
+                    <div class="ltls talk"><img src="../images/community/talk.png" alt=""><div class="d">3745</div></div>
+                    <div class="ltls look"><img src="../images/community/look.png" alt=""><div class="d">8930</div></div>
+                    <div class="ltls share"><img src="../images/community/share.png" alt=""></div>
+                </div>
+            </div>
+
+            <div class="artical">
+                <div class="head">
+                    <div class="headerimg h"><img src="../images/community/community_header4.png" alt=""></div>
+                    <div class="headername h">
+                        <div class="hname">科技人</div>
+                        <div class="htime">30分钟前</div>
+                        <div class="himg"><img src="../images/community/attention.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="text" onclick="openCommunityDetails()">
+                    <div class="title">机器人“慧眼”巡逻频率是人工的21倍</div>
+                    <div class="textmain"></div>
+                </div>
+                <div class="picture">
+                    <div><img src="../images/community/community6.png" alt=""></div>
+                    <div class="pict"></div>
+                    <div></div>
+                </div>
+                <div class="list">
+                    <div class="ltls like"><img src="../images/community/like.png" alt=""><div class="d">2336</div></div>
+                    <div class="ltls talk"><img src="../images/community/talk.png" alt=""><div class="d">3745</div></div>
+                    <div class="ltls look"><img src="../images/community/look.png" alt=""><div class="d">8930</div></div>
+                    <div class="ltls share"><img src="../images/community/share.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </section>
+  <!-- main end -->
+
+</body>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript">
+apiready = function(){
+  //下拉刷新
+      api.setRefreshHeaderInfo({
+        loadingImg: 'widget://image/refresh.png',
+        bgColor: '#000',
+        textColor: '#fff',
+        textDown: '拉我试试',
+        textUp: '松开刷新...'
+      } , function(ret, err) {
+        // htmls = '';
+        // // discoveryDate(tid,0)
+        // // numb=0;
+        api.refreshHeaderLoadDone();
+      });
+    //上拉加载
+      api.addEventListener({
+        name:'scrolltobottom',
+        extra:{
+        threshold:0 //设置距离底部多少距离时触发，默认值为0，数字类型
+        }
+      }, function(ret, err){
+          alert(ret)
+      })
+  //ajax
+  var html = '';
+  api.ajax({
+      url:'http://www.juzzn.com/discuss.php',
+      method:'get',
+      cache:false,
+      // charset：'utf-8',
+      dataType:'JSON'
+  },function(ret, err){
+      if (ret.status == 1) {
+        var data = ret.data;
+        for(var i = 0;i<data.length;i++){
+          html += '<div class="artical">';
+              html+='<div class="head">';
+                html+='<div class="headerimg h">';
+                  html+='<img src="'+data[i]['avatar']+'alt="">';
+                html+='</div>';
+                html+='<div class="headername h">';
+                  html+='<div class="hname">'+data[i]['author']+'</div>';
+                  html+='<div class="htime">'+data[i]['dateline']+'</div>';
+                  html+='<div class="himg">';
+                    html+='<img src="../images/community/attention.png" alt="">';
+                  html+='</div>';
+                html+='</div>';
+              html+='</div>';
+              html+='<div class="text" onclick="openCommunityDetails()">';
+                  html+='<div class="title">'+data[i]['subject']+'</div>';
+                  html+='<div class="textmain">'+data[i]['message']+'</div>';
+              html+='</div>';
+              if(data[i]['images'].length){
+                html+='<div class="picture">';
+                  html+='<div><img src="'+data[i]['images']+'" alt="" onclick="openimg(this)"></div>'
+                html+='</div>';
+              }
+              html+='<div class="list">';
+                html+='<div class="ltls like"><img src="../images/community/like.png" alt=""><div class="d">2336</div></div>';
+                html+='<div class="ltls talk"><img src="../images/community/talk.png" alt=""><div class="d">'+data[i]['num']+'</div></div>';
+                html+='<div class="ltls look"><img src="../images/community/look.png" alt=""><div class="d">'+data[i]['views']+'</div></div>';
+                html+='<div class="ltls share"><img src="../images/community/share.png" alt=""></div>';
+              html+='</div>';
+          html += '</div>';
+        }
+      }else if (ret.status == 2) {
+        html = '';
+        html ='<div style="text-align:center;line-height:50px;">没有数据</div>';
+        // msg'错误码：'+err.code+'；错误信息：'+err.msg+'网络状态码：'+err.statusCode);
+     }else {
+       api.alert(err.msg);
+     }
+       $api.html($api.byId('maxbox'),html);
+  });
+}
+  window.onload = function(){
+      //切换盒子
+      var btns = document.getElementById('span').getElementsByTagName('li');
+      for(var i=0;i<btns.length;i++){
+          btns[i].index =i
+          btns[i].onclick = function(){
+          //把所有的按钮的类都清除掉！
+             for(var i=0;i<btns.length;i++){
+                  btns[i].className = '';
+             }
+             //确立自己
+              this.className = 'hover';
+          }
+      }
+  }//
+    //打开一个新窗口
+    function openCommunityDetails(){
+          api.openWin({
+          name: 'CommunityDetails',
+          url: 'CommunityDetails.html'
+        });
+      }
+      //打开一张图片
+    function openimg(ret) {
+        $api
+  			var src = ret.getAttribute("src");
+        //图片加载
+        var photoBrowser = api.require('photoBrowser');
+        photoBrowser.open({
+            images: [
+                src
+            ],
+            bgColor: '#000'
+        }, function(ret, err) {
+          if(ret.eventType=='click'){
+              photoBrowser.close();
+          }
+        });
+  		}
+</script>
+</html>

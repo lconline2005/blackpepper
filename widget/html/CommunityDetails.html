@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+  />
+  <title>社区详情</title>
+  <link rel="stylesheet" type="text/css" href="../css/api.css" />
+  <style>
+  @font-face {
+    font-family: 'iconfont';
+    src: url('../icon/iconfont.eot');
+    src: url('../icon/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../icon/iconfont.woff') format('woff'),
+    url('../icon/iconfont.ttf') format('truetype'),
+    url('../icon/iconfont.svg#iconfont') format('svg');
+  }
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: "son mincho";
+    }
+    ul li {
+      list-style-type: none;
+    }
+    .comment_details {
+      width: 100%;
+      background-color: #f5f5f5;
+      height: 90%;
+      overflow-x: hidden;
+    }
+
+    /*section 顶部样式*/
+    .section {
+      width: 100%;
+      height: 44px;
+      background: url('../images/same_content/Header.jpg');
+      z-index: 1;
+    }
+    .section .sect {
+      float: left;
+      width: 33.33%;
+      height: 100%;
+    }
+    .section .fo {
+      font-size: 16px;
+      color: #ffffff;
+      line-height: 44px;
+      text-align: center;
+    }
+    .section .left>i {
+      position: absolute;
+      left: 15px;
+      top: 14px;
+      width: 12px;
+      height: 12px;
+      border: 1px solid #fff;
+      border-top: none;
+      border-right: none;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+    }
+    .section .right ul li {
+      float: right;
+      background: #fff;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      position: relative;
+      right: 15px;
+      top: 20px;
+      margin-left: 4px;
+    }
+    /*section end*/
+
+    /*header*/
+    .header {
+      width: 100%;
+      background-color: white;
+      border-bottom: 4px solid #f5f5f5;
+    }
+    .header .uptop {
+      width: 100%;
+      padding: 8px 0 12px 0;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .header .uptop div {
+      float: left;
+    }
+    .header .uptop .left {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: -6px 6px 0 10px;
+    }
+    .header .uptop .left img {
+      width: 40px;
+    }
+    .header .uptop .mid {
+      height: 48px;
+      width: 72%;
+    }
+    .header .uptop .mid .up {
+      font-size: 16px;
+      color: #222;
+      line-height: 28px;
+    }
+    .header .uptop .mid .down {
+      width: 100%;
+      font-size: 8px;
+      color: #808080;
+    }
+    .header .uptop .right img {
+      position: absolute;
+      width: 46px;
+      top: 8px;
+      right: 10px;
+    }
+    .header .title{
+      margin-left: 10px;
+      color: #111;
+      font-size: 18px;
+      padding-bottom: 14px;
+      position: relative;
+      font-weight: bold;
+    }
+    .header .title>i{
+      position: absolute;
+      right: 15px;
+      top:0;
+      width: 12px;
+      height: 12px;
+      border: 1px solid #808080;
+      border-top: none;
+      border-right: none;
+      transform:rotate(-45deg);
+      -webkit-transform:rotate(-45deg);
+    }
+    .header .bottom {
+      margin: 0 10px 0 10px;
+      color: #0f0f0f;
+      font-size: 16px;
+      padding-bottom: 10px;
+      line-height: 20px;
+    }
+    /*header end*/
+
+    /*main*/
+    .main {
+      width: 100%;
+      background-color: white;
+      border-bottom: 1px solid #e1e1e1;
+    }
+    .main .mue{
+      width: 100%;
+      height: 24px;
+      border-bottom: 1px solid #e1e1e1;
+      line-height: 24px;
+      background-color: #fff;
+    }
+    .main .mue .left{
+      padding-left: 10px;
+      color: #555;
+      font-size: 12px;
+    }
+    .main .menu {
+      width: 100%;
+      height: 26px;
+      line-height: 25px;
+      border-bottom: 1px solid #f1f1f1;
+    }
+    .main .menu div {
+      float: left;
+      font-size: 15px;
+      color: #515151;
+    }
+    .main .menu .left {
+      margin-left: 10px;
+    }
+    .main .menu .left div {
+      margin-right: 5px;
+    }
+    .main .menu .mid {
+      color: #000000;
+      margin-left: 30px;
+    }
+    .main .menu .mid div {
+      margin-right: 5px;
+      border-bottom: 2px solid black;
+    }
+    .main .menu .right {
+      margin-right: 18px;
+      float: right;
+    }
+    .main .menu .right div {
+      margin-right: 5px;
+    }
+    .main .text {
+      width: 100%;
+      background-color: #fff;
+      position: relative;
+    }
+    .main .text .left {
+      width: 40px;
+      height: 40px;
+      margin: 10px 6px 0 10px;
+      border-radius: 50%;
+    }
+    .main .text .left img {
+      width: 40px;
+    }
+    .main .text .right {
+      display: flex;
+    }
+    .main .text .right .top {
+      font-size: 14px;
+      color: #4a4a4a;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding:10px 0 6px 60px;
+    }
+    .main .text .right>i{
+      position: absolute;
+      right: 15px;
+      top:6px;
+      width: 12px;
+      height: 12px;
+      border: 1px solid #808080;
+      border-top: none;
+      border-right: none;
+      transform:rotate(-45deg);
+      -webkit-transform:rotate(-45deg);
+    }
+    .main .text .right .mid {
+      padding-left: 60px;
+      margin-top:-10px;
+    }
+    .main .text .right .mid .art {
+      color: #242424;
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .main .text .right .mid .answer {
+      background-color: #f5f5f5;
+      width: 98%;
+      padding-left: 2%;
+    }
+    .main .text .right .mid .answer .li {
+      width: 100%;
+      margin-top: 6px;
+      font-size: 14px;
+      color: #3a3a3a;
+    }
+    .main .text .right .mid .answer a {
+      color: #002663;
+    }
+    .main .text .right .mid .answer .an {
+      font-size: 10px;
+      color: #003663;
+      padding-bottom: 8px;
+    }
+    .main .text .right .mid .answer span {
+      width: 5px;
+      margin: 0 5px 0 5px;
+    }
+    .main .foot {
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      position: relative;
+    }
+    .main .foot div {
+      height: 100%;
+    }
+    .main .foot .left{
+      font-size: 10px;
+      color: #8d8d8d;
+    }
+    .main .foot .left .date {
+      position: absolute;
+      left: 60px;
+    }
+    .main .foot .left .time {
+      position: absolute;
+      left: 90px;
+    }
+    .main .foot .right{
+      font-size: 10px;
+      color: #4e4e4e;
+    }
+    .main .foot .right .talk {
+      position: absolute;
+      top: 0;
+      right: 60px;
+    }
+    .main .foot .right .img{
+      position: absolute;
+      top: 0;
+      right: 38px;
+      width: 16px;
+      font-style: normal;
+      font-size: 16px;
+      color: #8f8f8f;
+      font-family: "iconfont" !important;
+    }
+    .main .foot .right .share {
+      position: absolute;
+      top: 0;
+      right: 15px;
+    }
+    /*main end*/
+
+    /*footer*/
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 44px;
+      display: flex;
+      background-color: #fff;
+      border: 1px solid #e1e1e1;
+    }
+    footer .writetext {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      position: relative;
+    }
+    footer .writetext input {
+      height: 26px;
+      background-color: #fff;
+      width: 92%;
+      border-radius: 16px;
+      color: #8f8f8f;
+      font-size: 12px;
+      text-indent: 10px;
+      border: 1px solid #e1e1e1;
+      outline: none;
+    }
+    footer .writetext span{
+      position: absolute;
+      color: #8f8f8f;
+      font-size: 10px;
+      right: 16px;
+      top: 50%;
+      margin-top: -5px;
+    }
+    footer .list {
+      display: flex;
+      width: 50%;
+    }
+    footer .list a {
+      display: flex;
+      align-items: center;
+      width: 33.3333%;
+      justify-content: center;
+    }
+    footer .list a:nth-child(1){
+      position: relative;
+    }
+    .iconfont{
+      font-family: "iconfont" !important;
+      font-style: normal;
+      font-size: 28px;
+      color: #8f8f8f;
+    }
+    footer .list .likenum{
+      position: absolute;
+      background-color: #d93f3d;
+      font-size: 10px;
+      color: #fff;
+      text-align: center;
+      line-height: 14px;
+      width: 26px;
+      height: 14px;
+      border-radius: 6px;
+      top: 4px;
+      right: 0;
+    }
+    footer .list a:nth-child(2)>img{
+      width: 25px;
+    }
+    /*footer end*/
+
+  </style>
+</head>
+
+<body>
+  <div class="comment_details">
+    <!-- section 顶部 -->
+    <div class="section">
+      <div class="sect left">
+        <i onclick="closecomSon()"></i>
+      </div>
+      <div class="sect fo">社区详情</div>
+      <div class="sect right">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <!-- section end -->
+
+    <div style="width:100%;height:92%;">
+      <div style="height:100%;width:100%;">
+
+        <!-- header -->
+        <div class="header">
+          <div class="uptop">
+            <div class="left">
+              <img src="../images/same_content/fly.png" alt="">
+            </div>
+            <div class="mid">
+              <div class="up">CCVCVCV</div>
+              <div class="down">1小时前</div>
+            </div>
+            <div class="right">
+              <img src="../images/comment_details/follow.png" alt="">
+            </div>
+          </div>
+          <div class="title">
+            机器人“慧眼”巡逻速率是人工的21倍
+            <i></i>
+          </div>
+          <div class="bottom">
+            如果你无法简洁的表达你的想法，那只说明你还不够了解它如果你无法简洁的表达你的想法，那只说明你 还不够了解它--啊尔伯特·爱因斯坦尔伯特
+          </div>
+        </div>
+        <!-- header end -->
+
+        <!-- main -->
+        <div class="main">
+          <div class="mue">
+              <div class="left">评论</div>
+          </div>
+          <div class="text">
+            <div class="left">
+                <img src="../images/same_content/fly.png" alt="">
+            </div>
+            <div class="right">
+                <div class="top">afbgn</div>
+                <i></i>
+                <div class="mid">
+                    <div class="art">如果你无法简洁的表达你打想法，那只说明你还不够了解它。阿尔伯特·爱因斯坦</div>
+                    <div class="answer">
+                        <div class="li">
+                            <a href="">iusjjdj：</a>
+                            <span>hshdfshsdfhdfs</span>
+                        </div>
+                        <div class="li">
+                            <a href="">dgdgjkaf：</a>
+                            <span>sdfgsdfhsdhsdhdsfg</span>
+                        </div>
+                        <div class="an li">
+                            <a href="javascript:void(0)" onclick="OpcomSonSon()">共<span>8</span>条回复&nbsp;></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="foot">
+              <div class="left">
+                  <div class="date">3-20</div>
+                  <div class="time">15:10</div>
+              </div>
+              <div class="right">
+                  <div class="talk">回复·</div>
+                  <i class="iconfont img">&#xf010d;</i>
+                  <div class="share">666</div>
+              </div>
+          </div>
+
+        </div>
+
+        <!-- main end -->
+
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+      <div class="writetext">
+        <input type="text" name="" id="talk" placeholder="写评论...">
+        <span id="talknum">评论数·18</span>
+      </div>
+      <div class="list">
+        <a href="javascript:;" >
+              <i class="iconfont">&#xf010d;</i>
+          <div class="likenum">28</div>
+        </a>
+        <a href="javascript:;">
+          <i class="iconfont">&#xe604;</i>
+        </a>
+        <a href="javascript:;">
+          <i class="iconfont">&#xe628;</i>
+        </a>
+      </div>
+    </footer>
+    <!-- footer end -->
+  </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+  //关闭这个窗口
+  function closecomSon() {
+    api.closeWin({
+      name: 'CommunityDetails'
+    });
+  }
+  // 打开回复按钮
+  function OpcomSonSon() {
+    api.openWin({
+      name: 'CommunityCommentDetails',
+      url: 'CommunityCommentDetails.html'
+    });
+  }
+
+  //点击输入框
+    var inputbtn = document.getElementById('talk');
+    var talknum = document.getElementById('talknum');
+    inputbtn.onfocus=function(){
+      talknum.style.display="none";
+    };
+    inputbtn.onblur=function(){
+      talknum.style.display="block";
+    }
+</script>
+
+</html>
